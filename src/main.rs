@@ -498,10 +498,10 @@ async fn disconnect_session(session_id: SessionId, state: &Arc<Mutex<ChatState>>
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let listener = TcpListener::bind("0.0.0.0:2323").await?;
+    let listener = TcpListener::bind("0.0.0.0:42069").await?;
     let state = Arc::new(Mutex::new(ChatState::new()));
 
-    println!("rust-chat listening on 0.0.0.0:2323");
+    println!("rust-chat listening on 0.0.0.0:42069");
 
     let mut next_session_id: SessionId = 1;
 

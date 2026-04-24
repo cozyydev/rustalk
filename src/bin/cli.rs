@@ -8,7 +8,7 @@ use tokio::net::TcpStream;
 async fn main() -> Result<()> {
     let addr = env::args()
         .nth(1)
-        .unwrap_or_else(|| "127.0.0.1:2323".to_string());
+        .unwrap_or_else(|| "127.0.0.1:42069".to_string());
 
     println!("Connecting to {addr}...");
     let stream = TcpStream::connect(&addr)

@@ -5,22 +5,25 @@ A lightweight TCP chat server with CLI and TUI clients written in Rust.
 ## Quick Start
 
 Start the server:
+
 ```bash
 cargo run
 ```
 
 In another terminal, start the client:
+
 ```bash
-cargo run -- <server-ip>:2323
+cargo run -- <server-ip>:42069
 ```
 
-The server listens on `0.0.0.0:2323`.
+The server listens on `0.0.0.0:42069`.
 
 ## Recommended Network Model
 
 This project is designed primarily for private use over Tailscale.
 
 The intended setup is:
+
 - one central TCP server
 - clients connect over Tailscale using MagicDNS or Tailscale IP
 - no public internet exposure by default
@@ -52,22 +55,27 @@ TCP tunnel options expose the raw TCP chat service. They do not automatically cr
 1. Install [Tailscale](https://tailscale.com/install)
 2. Ensure Tailscale is running on both machines
 3. Get your Tailscale IP:
+
    ```bash
    tailscale ip -4
    ```
+
 4. Connect from the client:
+
    ```bash
-   nc <server-tailscale-ip> 2323
+   nc <server-tailscale-ip> 42069
    ```
 
    Or use the included CLI client:
+
    ```bash
-   cargo run --bin cli -- <server-tailscale-ip>:2323
+   cargo run --bin cli -- <server-tailscale-ip>:42069
    ```
 
    Or use the included TUI client:
+
    ```bash
-   cargo run -- <server-tailscale-ip>:2323
+   cargo run -- <server-tailscale-ip>:42069
    ```
 
 ### Option 2: Tailscale Funnel
@@ -75,7 +83,7 @@ TCP tunnel options expose the raw TCP chat service. They do not automatically cr
 If you want to allow connections from machines not on your Tailscale network:
 
 ```bash
-tailscale funnel 2323
+tailscale funnel 42069
 ```
 
 Then clients can connect to your public Funnel URL.
@@ -92,13 +100,13 @@ You can connect from your phone or tablet using a terminal app:
 Then connect using netcat/telnet:
 
 ```bash
-nc <server-ip> 2323
+nc <server-ip> 42069
 ```
 
 Or from Termux:
 
 ```bash
-telnet <server-ip> 2323
+telnet <server-ip> 42069
 ```
 
 Enter your nickname when prompted, then start chatting!
@@ -106,7 +114,7 @@ Enter your nickname when prompted, then start chatting!
 ### Option 4: Cloudflare Tunnel
 
 ```bash
-cloudflared tunnel --url tcp://localhost:2323
+cloudflared tunnel --url tcp://localhost:42069
 ```
 
 This exposes the raw TCP service. It does not provide a browser UI.
@@ -124,7 +132,7 @@ This exposes the raw TCP service. It does not provide a browser UI.
 ### Option 7: ngrok
 
 ```bash
-ngrok tcp 2323
+ngrok tcp 42069
 ```
 
 Then connect to the provided ngrok TCP endpoint.
@@ -134,6 +142,7 @@ Then connect to the provided ngrok TCP endpoint.
 ### Server
 
 Start the server:
+
 ```bash
 cargo run
 ```
@@ -141,7 +150,7 @@ cargo run
 ### CLI Client
 
 ```bash
-cargo run --bin cli -- <server-ip>:2323
+cargo run --bin cli -- <server-ip>:42069
 ```
 
 ### TUI Client
@@ -149,7 +158,7 @@ cargo run --bin cli -- <server-ip>:2323
 The TUI client provides an interactive terminal UI:
 
 ```bash
-cargo run -- <server-ip>:2323
+cargo run -- <server-ip>:42069
 ```
 
 Controls:
@@ -222,3 +231,4 @@ This produces binaries such as:
 - `target/release/rust-chat`
 - `target/release/cli`
 - `target/release/tui`
+
