@@ -208,11 +208,7 @@ pub fn render_message(msg: &UiMessage, theme: &Theme, my_nick: &str) -> Line<'st
             Span::styled(body.clone(), Style::default().fg(theme.error)),
         ]),
         UiMessage::Chat { from, body } => {
-            let name_color = if from == my_nick {
-                theme.self_name
-            } else {
-                theme.other_name
-            };
+            let name_color = theme.color_for_name(from, my_nick);
 
             Line::from(vec![
                 Span::styled(
