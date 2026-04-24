@@ -17,23 +17,23 @@ async fn main() -> Result<()> {
 
     let (reader, mut writer) = stream.into_split();
 
-    print!("Nickname: ");
+    print!("Enter Your Handle: ");
     io::stdout().flush().context("failed to flush stdout")?;
 
     let mut nick = String::new();
     io::stdin()
         .read_line(&mut nick)
-        .context("failed to read nickname")?;
+        .context("failed to read your handle")?;
     let nick = nick.trim();
 
     if nick.is_empty() {
-        bail!("nickname cannot be empty");
+        bail!("your handle cannot be empty");
     }
 
     writer
         .write_all(format!("{nick}\n").as_bytes())
         .await
-        .context("failed to send nickname")?;
+        .context("failed to send handle")?;
 
     println!("Connected. Type messages and press Enter.");
     println!("Commands: /who, /quit");

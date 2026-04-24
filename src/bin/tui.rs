@@ -37,15 +37,15 @@ async fn main() -> Result<()> {
 }
 
 fn prompt_for_nickname() -> Result<String> {
-    println!("Nickname:");
+    println!("Enter Your Handle:");
     let mut nick = String::new();
     io::stdin()
         .read_line(&mut nick)
-        .context("failed to read nickname")?;
+        .context("failed to read handle")?;
 
     let nick = nick.trim().to_string();
     if nick.is_empty() {
-        return Err(anyhow!("nickname cannot be empty"));
+        return Err(anyhow!("your handle cannot be empty"));
     }
 
     Ok(nick)
@@ -61,7 +61,7 @@ async fn run_tui(addr: String, nick: String) -> Result<()> {
     writer
         .write_all(format!("{nick}\n").as_bytes())
         .await
-        .context("failed to send nickname")?;
+        .context("failed to send handle")?;
 
     let (net_tx, mut net_rx) = mpsc::unbounded_channel::<String>();
 

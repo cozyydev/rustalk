@@ -241,7 +241,7 @@ async fn handle_client(
                 tx,
             },
         );
-        state.send_raw(session_id, "Enter a nickname to join the chat");
+        state.send_raw(session_id, "Enter your handle to join the chat");
     }
 
     let writer_task = tokio::spawn(async move {
@@ -300,7 +300,7 @@ async fn handle_identification(session_id: SessionId, line: &str, state: &Arc<Mu
                 state.send_to(
                     session_id,
                     ServerMsg::Error {
-                        body: "First message must be a nickname or a hello message".to_string(),
+                        body: "First message must be your handle or a hello message".to_string(),
                     },
                 );
                 return;
@@ -332,7 +332,7 @@ async fn handle_identification(session_id: SessionId, line: &str, state: &Arc<Mu
         state.send_to(
             session_id,
             ServerMsg::Error {
-                body: "You already set your nickname".to_string(),
+                body: "You already set your handle".to_string(),
             },
         );
         return;
@@ -342,7 +342,7 @@ async fn handle_identification(session_id: SessionId, line: &str, state: &Arc<Mu
         state.send_to(
             session_id,
             ServerMsg::Error {
-                body: "Nickname must be 2-24 chars: letters, numbers, _ or -".to_string(),
+                body: "Handle must be 2-24 chars: letters, numbers, _ or -".to_string(),
             },
         );
         return;
@@ -352,7 +352,7 @@ async fn handle_identification(session_id: SessionId, line: &str, state: &Arc<Mu
         state.send_to(
             session_id,
             ServerMsg::Error {
-                body: "That nickname is already in use".to_string(),
+                body: "That handle is already in use".to_string(),
             },
         );
         return;
@@ -411,7 +411,7 @@ async fn handle_chat_input(session_id: SessionId, line: &str, state: &Arc<Mutex<
                     state.send_to(
                         session_id,
                         ServerMsg::Error {
-                            body: "You already set your nickname".to_string(),
+                            body: "You already set your handle".to_string(),
                         },
                     );
                 }

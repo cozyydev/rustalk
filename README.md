@@ -4,8 +4,14 @@ A lightweight TCP chat server with CLI and TUI clients written in Rust.
 
 ## Quick Start
 
+Start the server:
 ```bash
-cargo run --bin rust-chat
+cargo run
+```
+
+In another terminal, start the client:
+```bash
+cargo run -- <server-ip>:2323
 ```
 
 The server listens on `0.0.0.0:2323`.
@@ -39,6 +45,8 @@ TCP tunnel options expose the raw TCP chat service. They do not automatically cr
 
 ## Connecting
 
+**Important:** Start the server first, then connect clients to it.
+
 ### Option 1: Tailscale
 
 1. Install [Tailscale](https://tailscale.com/install)
@@ -59,7 +67,7 @@ TCP tunnel options expose the raw TCP chat service. They do not automatically cr
 
    Or use the included TUI client:
    ```bash
-   cargo run --bin tui -- <server-tailscale-ip>:2323
+   cargo run -- <server-tailscale-ip>:2323
    ```
 
 ### Option 2: Tailscale Funnel
@@ -125,14 +133,9 @@ Then connect to the provided ngrok TCP endpoint.
 
 ### Server
 
+Start the server:
 ```bash
 cargo run
-```
-
-Or explicitly:
-
-```bash
-cargo run --bin rust-chat
 ```
 
 ### CLI Client
@@ -146,7 +149,7 @@ cargo run --bin cli -- <server-ip>:2323
 The TUI client provides an interactive terminal UI:
 
 ```bash
-cargo run --bin tui -- <server-ip>:2323
+cargo run -- <server-ip>:2323
 ```
 
 Controls:
