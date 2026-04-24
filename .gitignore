@@ -1,0 +1,19 @@
+/target/
+Cargo.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Terminal / local junk
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Environment / secrets
+.env
+.env.*
+
+# Tailscale / local test notes
+*.local
