@@ -2,7 +2,7 @@
 name = "rustalk"
 version = "0.1.0"
 edition = "2024"
-default-run = "tui"
+default-run = "rustalk-tui"
 
 [dependencies]
 anyhow = "1.0.102"
